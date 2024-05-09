@@ -120,6 +120,7 @@
             tehnologiaInformațieiToolStripMenuItem.Name = "tehnologiaInformațieiToolStripMenuItem";
             tehnologiaInformațieiToolStripMenuItem.Size = new Size(284, 22);
             tehnologiaInformațieiToolStripMenuItem.Text = "Tehnologia informației";
+            tehnologiaInformațieiToolStripMenuItem.Click += tehnologiaInformațieiToolStripMenuItem_Click;
             // 
             // roboticăToolStripMenuItem
             // 
