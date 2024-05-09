@@ -21,5 +21,11 @@ namespace CatalogUnitBv
             this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
             this.Size = new System.Drawing.Size(516, 65);
         }
+
+        private void tehnologiaInformațieiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TI form4 = new TI();
+            form4.Show();
+        }
     }
 }
