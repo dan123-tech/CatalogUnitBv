@@ -18,6 +18,11 @@ namespace CatalogUnitBv
         public Form1()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Setează stilul borderului la FixedSingle
+            this.MaximizeBox = false; // Dezactivează butonul de maximizare
+            this.MinimizeBox = false; // Dezactivează butonul de minimizare
+            this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
+            this.Size = new System.Drawing.Size(557, 370);
             Autentificare.FlatAppearance.BorderSize = 0;
             Autentificare.FlatStyle = FlatStyle.Flat;
 
