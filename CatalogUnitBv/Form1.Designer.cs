@@ -78,6 +78,7 @@
             Autentificare.TabIndex = 3;
             Autentificare.Text = "Autentificare";
             Autentificare.UseVisualStyleBackColor = false;
+            Autentificare.Click += Autentificare_Click;
             // 
             // Email
             // 
@@ -190,7 +191,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 31);
-            ClientSize = new Size(545, 351);
+            ClientSize = new Size(553, 355);
             Controls.Add(ImgFundal);
             Controls.Add(lblPass);
             Controls.Add(label1);

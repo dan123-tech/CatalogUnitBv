@@ -30,7 +30,13 @@ namespace CatalogUnitBv
             path.CloseAllFigures();
             Autentificare.Region = new Region(path);
 
-            
+            GraphicsPath formaCurbata = new GraphicsPath();
+            formaCurbata.AddArc(0, 0, 20, 20, 180, 90); // Colțul din stânga sus
+            formaCurbata.AddArc(ImgFundal.Width - 30, 0, 20, 20, 270, 90); // Colțul din dreapta sus
+            formaCurbata.AddArc(ImgFundal.Width - 30, ImgFundal.Height - 30, 20, 20, 0, 90); // Colțul din dreapta jos
+            formaCurbata.AddArc(0, ImgFundal.Height - 20, 20, 20, 90, 90); // Colțul din stânga jos
+            formaCurbata.CloseFigure(); // Închiderea figurii pentru a forma o formă închisă
+            ImgFundal.Region = new Region(formaCurbata); // Setarea formei curbate ca regiune a panoului
 
 
             Save.FlatAppearance.BorderColor = Color.White;// Culoare transparentă pentru bordură
@@ -55,7 +61,8 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
-
+            Form2 form2 = new Form2();
+            form2.Show();
         }
     }
 }
