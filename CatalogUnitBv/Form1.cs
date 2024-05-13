@@ -22,7 +22,7 @@ namespace CatalogUnitBv
             this.MaximizeBox = false; // Dezactivează butonul de maximizare
             this.MinimizeBox = false; // Dezactivează butonul de minimizare
             this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
-            this.Size = new System.Drawing.Size(557, 370);
+            // this.Size = new System.Drawing.Size(557, 370);
             Autentificare.FlatAppearance.BorderSize = 0;
             Autentificare.FlatStyle = FlatStyle.Flat;
 
@@ -66,8 +66,52 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             Form2 form2 = new Form2();
             form2.Show();
+=======
+            try
+            {
+                string connstring = "server=localhost;uid=root;pwd=1234;database=CatalogUnitbv";
+                MySqlConnection con = new MySqlConnection();
+                con.ConnectionString = connstring;
+                con.Open();
+
+                string email = Email.Text; // Obține emailul introdus
+                string parola = Parola.Text; // Obține parola introdusă
+
+                // Verifică existența unui student cu emailul și parola introduse
+                string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
+
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                // Dacă există un student cu emailul și parola introduse
+                if (reader.HasRows)
+                {
+                    Form2 form2 = new Form2();
+                    form2.Show();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        // Deschideți Form6 pentru înregistrare
+                        Create form6 = new Create();
+                        form6.Show();
+                    }
+                }
+
+
+                reader.Close(); // Închide reader-ul
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+>>>>>>> Stashed changes
         }
     }
 }
