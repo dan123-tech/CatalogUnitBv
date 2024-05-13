@@ -67,6 +67,7 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
+
             try
             {
                 string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
@@ -108,6 +109,8 @@ namespace CatalogUnitBv
             {
                 MessageBox.Show(ex.ToString());
             }
+
+
         }
 
     }
