@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,7 +23,7 @@ namespace CatalogUnitBv
             this.MaximizeBox = false; // Dezactivează butonul de maximizare
             this.MinimizeBox = false; // Dezactivează butonul de minimizare
             this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
-            // this.Size = new System.Drawing.Size(557, 370);
+            this.Size = new System.Drawing.Size(557, 370);
             Autentificare.FlatAppearance.BorderSize = 0;
             Autentificare.FlatStyle = FlatStyle.Flat;
 
@@ -66,13 +67,10 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
-            Form2 form2 = new Form2();
-            form2.Show();
-=======
+
             try
             {
-                string connstring = "server=localhost;uid=root;pwd=1234;database=CatalogUnitbv";
+                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
                 MySqlConnection con = new MySqlConnection();
                 con.ConnectionString = connstring;
                 con.Open();
@@ -111,7 +109,9 @@ namespace CatalogUnitBv
             {
                 MessageBox.Show(ex.ToString());
             }
->>>>>>> Stashed changes
+
+
         }
+
     }
 }

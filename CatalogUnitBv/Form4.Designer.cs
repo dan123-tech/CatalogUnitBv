@@ -29,26 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TI));
-            Note = new TableLayoutPanel();
             button1 = new Button();
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // Note
-            // 
-            Note.ColumnCount = 3;
-            Note.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.9955139F));
-            Note.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 63.0044861F));
-            Note.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 117F));
-            Note.Location = new Point(12, 93);
-            Note.Name = "Note";
-            Note.RowCount = 5;
-            Note.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            Note.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            Note.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            Note.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            Note.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            Note.Size = new Size(747, 95);
-            Note.TabIndex = 0;
             // 
             // button1
             // 
@@ -60,23 +44,31 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(116, 72);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.TabIndex = 2;
+            // 
             // TI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 31);
             ClientSize = new Size(800, 450);
+            Controls.Add(dataGridView1);
             Controls.Add(button1);
-            Controls.Add(Note);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "TI";
             Text = "Tehnologia informației";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private TableLayoutPanel Note;
         private Button button1;
+        private DataGridView dataGridView1;
     }
 }
