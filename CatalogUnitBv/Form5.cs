@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CatalogUnitBv
 {
-    public partial class Form5 : Form
+    public partial class NoteStudenti : Form
     {
-        public Form5()
+        public NoteStudenti()
         {
             InitializeComponent();
         }
