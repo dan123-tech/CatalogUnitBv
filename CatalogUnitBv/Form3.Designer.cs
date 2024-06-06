@@ -76,7 +76,7 @@
             // 
             licențăToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { electrohenicaToolStripMenuItem, inginerieElectricaSiCalculatoareToolStripMenuItem, electronicăAplicatăToolStripMenuItem, tehnologiiȘiSistemeDeTelecomunicațiiToolStripMenuItem, calculatoareToolStripMenuItem, automaticăȘiInformaticăAplicatăToolStripMenuItem, tehnologiaInformațieiToolStripMenuItem, roboticăToolStripMenuItem });
             licențăToolStripMenuItem.Name = "licențăToolStripMenuItem";
-            licențăToolStripMenuItem.Size = new Size(180, 22);
+            licențăToolStripMenuItem.Size = new Size(120, 22);
             licențăToolStripMenuItem.Text = "Licență";
             // 
             // electrohenicaToolStripMenuItem
@@ -132,7 +132,7 @@
             // 
             masterToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cyberSecurityENToolStripMenuItem, sistemeElectriceAvansateToolStripMenuItem, sistemeElectroniceȘiDeComunicațiiIntegrateToolStripMenuItem, sistemeAvansateÎnAutomaticăȘiTehnologiiInformaticeToolStripMenuItem });
             masterToolStripMenuItem.Name = "masterToolStripMenuItem";
-            masterToolStripMenuItem.Size = new Size(180, 22);
+            masterToolStripMenuItem.Size = new Size(120, 22);
             masterToolStripMenuItem.Text = "Master";
             // 
             // cyberSecurityENToolStripMenuItem
@@ -163,7 +163,7 @@
             // 
             doctoratToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { inginerieElectricăToolStripMenuItem, inginerieElectronicăTelecomunicațiiȘiTehnologiiInformaționaleToolStripMenuItem, ingineriaSistemelorToolStripMenuItem, calculatoareȘiTehnologiaInformațieiToolStripMenuItem, toolStripMenuItem1 });
             doctoratToolStripMenuItem.Name = "doctoratToolStripMenuItem";
-            doctoratToolStripMenuItem.Size = new Size(180, 22);
+            doctoratToolStripMenuItem.Size = new Size(120, 22);
             doctoratToolStripMenuItem.Text = "Doctorat";
             // 
             // inginerieElectricăToolStripMenuItem
@@ -206,6 +206,7 @@
             MainMenuStrip = menuStrip1;
             Name = "IESC";
             Text = "IESC";
+            Load += IESC_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

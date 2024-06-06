@@ -50,15 +50,15 @@ namespace CatalogUnitBv
             Email.BorderStyle = BorderStyle.None; // Elimină stilul implicit al bordurii
             Email.BackColor = Color.FromArgb(37, 36, 40); // Setează culoarea fundalului
             Email.ForeColor = Color.White; // Setează culoarea textului
-          
-           
+
+
 
             Parola.BorderStyle = BorderStyle.None;
             Parola.BackColor = Color.FromArgb(37, 36, 40); // Setează culoarea fundalului
             Parola.ForeColor = Color.White; // Setează culoarea textului
         }
 
-       
+
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -79,7 +79,7 @@ namespace CatalogUnitBv
 
                 // Verifică existența unui student cu emailul și parola introduse
                 string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
-
+                GlobalData.Email = email;
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -109,6 +109,12 @@ namespace CatalogUnitBv
                 MessageBox.Show(ex.ToString());
             }
         }
+        public static class GlobalData
+        {
+            public static string Email { get; set; }
+        }
 
     }
-}
+} 
+    
+
