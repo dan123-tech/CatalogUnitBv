@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,6 +19,16 @@ namespace CatalogUnitBv
         public Create()
         {
             InitializeComponent();
+            Register.FlatAppearance.BorderSize = 0;
+            Register.FlatStyle = FlatStyle.Flat;
+            int radius = 15; // Mărimea razei pentru colțurile curbate
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
+            path.AddArc(Register.Width - radius * 2, 0, radius * 2, radius * 2, 270, 90);
+            path.AddArc(Register.Width - radius * 2, Register.Height - radius * 2, radius * 2, radius * 2, 0, 90);
+            path.AddArc(0, Register.Height - radius * 2, radius * 2, radius * 2, 90, 90);
+            path.CloseAllFigures();
+            Register.Region = new Region(path);
         }
         private bool IsEmailValid(string email)
         {
@@ -30,15 +41,11 @@ namespace CatalogUnitBv
         {
             using (SHA256 sha256 = SHA256.Create())
             {
-                // Compute hash from input string
-                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
-                byte[] hashBytes = sha256.ComputeHash(inputBytes);
-
-                // Convert byte array to a string representation
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
                 StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
+                foreach (byte b in bytes)
                 {
-                    builder.Append(hashBytes[i].ToString("x2"));
+                    builder.Append(b.ToString("x2"));
                 }
                 return builder.ToString();
             }
@@ -89,7 +96,7 @@ namespace CatalogUnitBv
                     con.Open();
                     string sql = "INSERT INTO Student (Email, Parola) VALUES (@Email, @Parola)";
                     MySqlCommand cmd = new MySqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@Email", Email.Text);
+                    cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Parola", hashedParola);
                     int rowsAffected = cmd.ExecuteNonQuery();
 

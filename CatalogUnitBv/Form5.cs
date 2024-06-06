@@ -16,5 +16,10 @@ namespace CatalogUnitBv
         {
             InitializeComponent();
         }
+
+        private void NoteStudenti_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

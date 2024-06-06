@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static CatalogUnitBv.Form1;
 
 namespace CatalogUnitBv
 {
@@ -15,17 +16,40 @@ namespace CatalogUnitBv
         public IESC()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Setează stilul borderului la FixedSingle
-            this.MaximizeBox = false; // Dezactivează butonul de maximizare
-            this.MinimizeBox = false; // Dezactivează butonul de minimizare
-            this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; 
+            this.MaximizeBox = false; 
+            this.MinimizeBox = false; 
+            this.StartPosition = FormStartPosition.CenterScreen; 
             this.Size = new System.Drawing.Size(516, 65);
         }
-
+        string email = GlobalData.Email;
         private void tehnologiaInformațieiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TI form4 = new TI();
-            form4.Show();
+            
+            string email = GlobalData.Email;
+            CheckEmailAndOpenForm(email);
+        }
+        private void CheckEmailAndOpenForm(string email)
+        {
+            if (email.EndsWith("@student.unitbv.ro"))
+            {
+                NoteStudenti form5 = new NoteStudenti();
+                form5.Show();
+            }
+            else if (email.EndsWith("@unitbv.ro"))
+            {
+                TI form4 = new TI();
+                form4.Show();
+            }
+            else
+            {
+                MessageBox.Show("Email invalid sau necorespunzător.", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void IESC_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

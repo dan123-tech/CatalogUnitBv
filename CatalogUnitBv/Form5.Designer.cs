@@ -65,6 +65,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "NoteStudenti";
             Text = "Note";
+            Load += NoteStudenti_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -39,42 +39,46 @@
             // 
             Email.Location = new Point(208, 65);
             Email.Name = "Email";
-            Email.Size = new Size(100, 23);
+            Email.Size = new Size(193, 23);
             Email.TabIndex = 5;
             // 
             // Parola
             // 
             Parola.Location = new Point(208, 106);
             Parola.Name = "Parola";
-            Parola.Size = new Size(100, 23);
+            Parola.PasswordChar = '*';
+            Parola.Size = new Size(193, 23);
             Parola.TabIndex = 6;
             // 
             // label6
             // 
             label6.AutoSize = true;
+            label6.ForeColor = Color.White;
             label6.Location = new Point(130, 73);
             label6.Name = "label6";
-            label6.Size = new Size(38, 15);
+            label6.Size = new Size(36, 15);
             label6.TabIndex = 12;
-            label6.Text = "label6";
+            label6.Text = "Email";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(130, 114);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(130, 109);
             label7.Name = "label7";
-            label7.Size = new Size(38, 15);
+            label7.Size = new Size(40, 15);
             label7.TabIndex = 13;
-            label7.Text = "label7";
+            label7.Text = "Parola";
             // 
             // Register
             // 
+            Register.BackColor = Color.FromArgb(238, 149, 76);
             Register.Location = new Point(208, 190);
             Register.Name = "Register";
             Register.Size = new Size(75, 23);
             Register.TabIndex = 14;
             Register.Text = "Register";
-            Register.UseVisualStyleBackColor = true;
+            Register.UseVisualStyleBackColor = false;
             Register.Click += button1_Click;
             // 
             // Create
