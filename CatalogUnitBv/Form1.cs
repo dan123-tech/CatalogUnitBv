@@ -70,7 +70,7 @@ namespace CatalogUnitBv
 
             try
             {
-                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
+                string connstring = "server=localhost;uid=root;pwd=1234;database=CatalogUnitbv";
                 MySqlConnection con = new MySqlConnection();
                 con.ConnectionString = connstring;
                 con.Open();
