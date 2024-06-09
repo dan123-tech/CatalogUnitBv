@@ -68,7 +68,9 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
+
             try
+
              {
                  string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
                  MySqlConnection con = new MySqlConnection();
@@ -113,6 +115,7 @@ namespace CatalogUnitBv
            
             
            
+
         }
         public static class GlobalData
         {
