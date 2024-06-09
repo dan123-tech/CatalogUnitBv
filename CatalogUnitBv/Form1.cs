@@ -68,7 +68,7 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
-            /* try
+            try
              {
                  string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
                  MySqlConnection con = new MySqlConnection();
@@ -80,7 +80,7 @@ namespace CatalogUnitBv
 
                  // Verifică existența unui student cu emailul și parola introduse
                  string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
-                 
+                 GlobalData.Email = email;
                  MySqlCommand cmd = new MySqlCommand(sql, con);
                  MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -109,11 +109,10 @@ namespace CatalogUnitBv
              {
                  MessageBox.Show(ex.ToString());
              }
-         }*/
-            string email = Email.Text;
-            GlobalData.Email = email;
-            Form2 form2 = new Form2();
-            form2.Show();
+         }
+           
+            
+           
         }
         public static class GlobalData
         {
