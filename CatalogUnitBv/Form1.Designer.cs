@@ -124,6 +124,7 @@
             Recovery.Size = new Size(130, 15);
             Recovery.TabIndex = 12;
             Recovery.Text = "Probleme la conectare?";
+            Recovery.Click += Recovery_Click;
             // 
             // label5
             // 
