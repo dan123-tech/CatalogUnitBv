@@ -33,8 +33,8 @@ namespace CatalogUnitBv
         {
             if (email.EndsWith("@student.unitbv.ro"))
             {
-                NoteStudenti form5 = new NoteStudenti();
-                form5.Show();
+                Form7 form7 = new Form7();
+                form7.Show();
             }
             else if (email.EndsWith("@unitbv.ro"))
             {

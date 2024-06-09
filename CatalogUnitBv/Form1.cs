@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CatalogUnitBv
 {
@@ -67,47 +68,52 @@ namespace CatalogUnitBv
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
-                MySqlConnection con = new MySqlConnection();
-                con.ConnectionString = connstring;
-                con.Open();
+            /* try
+             {
+                 string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
+                 MySqlConnection con = new MySqlConnection();
+                 con.ConnectionString = connstring;
+                 con.Open();
 
-                string email = Email.Text; // Obține emailul introdus
-                string parola = Parola.Text; // Obține parola introdusă
+                 string email = Email.Text; // Obține emailul introdus
+                 string parola = Parola.Text; // Obține parola introdusă
 
-                // Verifică existența unui student cu emailul și parola introduse
-                string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
-                GlobalData.Email = email;
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                 // Verifică existența unui student cu emailul și parola introduse
+                 string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
+                 
+                 MySqlCommand cmd = new MySqlCommand(sql, con);
+                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                // Dacă există un student cu emailul și parola introduse
-                if (reader.HasRows)
-                {
-                    Form2 form2 = new Form2();
-                    form2.Show();
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                 // Dacă există un student cu emailul și parola introduse
+                 if (reader.HasRows)
+                 {
+                     Form2 form2 = new Form2();
+                     form2.Show();
+                 }
+                 else
+                 {
+                     DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
-                    if (result == DialogResult.Yes)
-                    {
-                        // Deschideți Form6 pentru înregistrare
-                        Create form6 = new Create();
-                        form6.Show();
-                    }
-                }
+                     if (result == DialogResult.Yes)
+                     {
+                         // Deschideți Form6 pentru înregistrare
+                         Create form6 = new Create();
+                         form6.Show();
+                     }
+                 }
 
 
-                reader.Close(); // Închide reader-ul
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                 reader.Close(); // Închide reader-ul
+             }
+             catch (MySqlException ex)
+             {
+                 MessageBox.Show(ex.ToString());
+             }
+         }*/
+            string email = Email.Text;
+            GlobalData.Email = email;
+            Form2 form2 = new Form2();
+            form2.Show();
         }
         public static class GlobalData
         {
