@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CatalogUnitBv.Properties;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -71,58 +72,62 @@ namespace CatalogUnitBv
 
             try
 
-             {
-                 string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
-                 MySqlConnection con = new MySqlConnection();
-                 con.ConnectionString = connstring;
-                 con.Open();
+            {
+                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
+                MySqlConnection con = new MySqlConnection();
+                con.ConnectionString = connstring;
+                con.Open();
 
-                 string email = Email.Text; // Obține emailul introdus
-                 string parola = Parola.Text; // Obține parola introdusă
+                string email = Email.Text; // Obține emailul introdus
+                string parola = Parola.Text; // Obține parola introdusă
 
-                 // Verifică existența unui student cu emailul și parola introduse
-                 string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
-                 GlobalData.Email = email;
-                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                 MySqlDataReader reader = cmd.ExecuteReader();
+                // Verifică existența unui student cu emailul și parola introduse
+                string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
+                GlobalData.Email = email;
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                MySqlDataReader reader = cmd.ExecuteReader();
 
-                 // Dacă există un student cu emailul și parola introduse
-                 if (reader.HasRows)
-                 {
-                     Form2 form2 = new Form2();
-                     form2.Show();
-                 }
-                 else
-                 {
-                     DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                // Dacă există un student cu emailul și parola introduse
+                if (reader.HasRows)
+                {
+                    Form2 form2 = new Form2();
+                    form2.Show();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
-                     if (result == DialogResult.Yes)
-                     {
-                         // Deschideți Form6 pentru înregistrare
-                         Create form6 = new Create();
-                         form6.Show();
-                     }
-                 }
+                    if (result == DialogResult.Yes)
+                    {
+                        // Deschideți Form6 pentru înregistrare
+                        Create form6 = new Create();
+                        form6.Show();
+                    }
+                }
 
 
-                 reader.Close(); // Închide reader-ul
-             }
-             catch (MySqlException ex)
-             {
-                 MessageBox.Show(ex.ToString());
-             }
-         }
-           
-            
-           
-
+                reader.Close(); // Închide reader-ul
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
-        public static class GlobalData
+
+        private void Recovery_Click(object sender, EventArgs e)
+        {
+            Change_Pass form8 = new Change_Pass();
+            form8.Show();
+        }
+    }
+    public static class GlobalData
         {
             public static string Email { get; set; }
         }
 
+        
+
     }
-} 
+
     
 
