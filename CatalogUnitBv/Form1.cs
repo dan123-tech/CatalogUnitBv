@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,9 +66,9 @@ namespace CatalogUnitBv
         {
             string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
 
-            using (MySqlConnection con = new MySqlConnection(connstring))
+            try
             {
-                try
+                using (MySqlConnection con = new MySqlConnection(connstring))
                 {
                     con.Open();
 
@@ -115,10 +116,10 @@ namespace CatalogUnitBv
                         }
                     }
                 }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Eroare de conexiune la baza de date: " + ex.Message);
-                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Eroare de conexiune la baza de date: " + ex.Message);
             }
         }
 
