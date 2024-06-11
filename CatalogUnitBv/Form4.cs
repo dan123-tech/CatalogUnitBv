@@ -97,7 +97,7 @@ namespace CatalogUnitBv
                         cmd.ExecuteNonQuery();
                     }
                 }
-                
+
                 // Display a success message
                 MessageBox.Show("Database updated successfully.");
 
