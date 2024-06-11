@@ -29,6 +29,11 @@ namespace CatalogUnitBv
             path.AddArc(0, Register.Height - radius * 2, radius * 2, radius * 2, 90, 90);
             path.CloseAllFigures();
             Register.Region = new Region(path);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            
         }
         private bool IsEmailValid(string email)
         {

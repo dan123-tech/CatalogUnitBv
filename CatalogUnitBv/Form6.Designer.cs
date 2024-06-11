@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Create));
             Email = new TextBox();
             Parola = new TextBox();
             label6 = new Label();
@@ -37,26 +38,29 @@
             // 
             // Email
             // 
-            Email.Location = new Point(208, 65);
+            Email.Location = new Point(297, 108);
+            Email.Margin = new Padding(4, 5, 4, 5);
             Email.Name = "Email";
-            Email.Size = new Size(193, 23);
+            Email.Size = new Size(274, 31);
             Email.TabIndex = 5;
             // 
             // Parola
             // 
-            Parola.Location = new Point(208, 106);
+            Parola.Location = new Point(297, 177);
+            Parola.Margin = new Padding(4, 5, 4, 5);
             Parola.Name = "Parola";
             Parola.PasswordChar = '*';
-            Parola.Size = new Size(193, 23);
+            Parola.Size = new Size(274, 31);
             Parola.TabIndex = 6;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.White;
-            label6.Location = new Point(130, 73);
+            label6.Location = new Point(186, 122);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(36, 15);
+            label6.Size = new Size(54, 25);
             label6.TabIndex = 12;
             label6.Text = "Email";
             // 
@@ -64,18 +68,20 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.White;
-            label7.Location = new Point(130, 109);
+            label7.Location = new Point(186, 182);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(40, 15);
+            label7.Size = new Size(60, 25);
             label7.TabIndex = 13;
             label7.Text = "Parola";
             // 
             // Register
             // 
             Register.BackColor = Color.FromArgb(238, 149, 76);
-            Register.Location = new Point(208, 190);
+            Register.Location = new Point(297, 317);
+            Register.Margin = new Padding(4, 5, 4, 5);
             Register.Name = "Register";
-            Register.Size = new Size(75, 23);
+            Register.Size = new Size(107, 38);
             Register.TabIndex = 14;
             Register.Text = "Register";
             Register.UseVisualStyleBackColor = false;
@@ -83,17 +89,19 @@
             // 
             // Create
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 31);
-            ClientSize = new Size(572, 385);
+            ClientSize = new Size(817, 642);
             Controls.Add(Register);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(Parola);
             Controls.Add(Email);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Create";
-            Text = "Form6";
+            Text = "Înregistrare";
             ResumeLayout(false);
             PerformLayout();
         }
