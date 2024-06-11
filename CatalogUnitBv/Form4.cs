@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,18 +16,18 @@ namespace CatalogUnitBv
         public TI()
         {
             InitializeComponent();
-            //TableLayoutPanel table = Note;
-            //table.ColumnCount = 4;
-            //table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            //table.Controls.Add(new Label() { Text = "Numele studentului", TextAlign = ContentAlignment.MiddleCenter }, 0, 0);
-            //table.Controls.Add(new Label() { Text = "Materia", TextAlign = ContentAlignment.MiddleCenter }, 1, 0);
-            //table.Controls.Add(new Label() { Text = "Nota", TextAlign = ContentAlignment.MiddleCenter }, 2, 0);
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
 
-            // Setează dimensiunea celulelor pentru capul de tabel
-            //table.ColumnStyles[0].SizeType = SizeType.AutoSize;
-            //table.ColumnStyles[1].SizeType = SizeType.AutoSize;
-            //table.ColumnStyles[2].SizeType = SizeType.AutoSize;
-  
+            int radius = 15;
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
+            path.AddArc(button1.Width - radius * 2, 0, radius * 2, radius * 2, 270, 90);
+            path.AddArc(button1.Width - radius * 2, button1.Height - radius * 2, radius * 2, radius * 2, 0, 90);
+            path.AddArc(0, button1.Height - radius * 2, radius * 2, radius * 2, 90, 90);
+            path.CloseAllFigures();
+            button1.Region = new Region(path);
+
 
         }
 

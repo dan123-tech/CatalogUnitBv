@@ -36,31 +36,35 @@
             // 
             // button1
             // 
-            button1.Location = new Point(360, 304);
+            button1.Location = new Point(517, 623);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(75, 33);
+            button1.Size = new Size(180, 55);
             button1.TabIndex = 1;
-            button1.Text = "button1";
+            button1.Text = "Update Note";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(116, 72);
+            dataGridView1.Location = new Point(166, 120);
+            dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(343, 250);
             dataGridView1.TabIndex = 2;
             // 
             // TI
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 31);
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1143, 750);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             Name = "TI";
             Text = "Tehnologia informației";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
