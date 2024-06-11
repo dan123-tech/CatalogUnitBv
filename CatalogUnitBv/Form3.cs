@@ -20,7 +20,7 @@ namespace CatalogUnitBv
             this.MaximizeBox = false; 
             this.MinimizeBox = false; 
             this.StartPosition = FormStartPosition.CenterScreen; 
-            this.Size = new System.Drawing.Size(516, 65);
+           // this.Size = new System.Drawing.Size(516, 65);
         }
         string email = GlobalData.Email;
         private void tehnologiaInformațieiToolStripMenuItem_Click(object sender, EventArgs e)

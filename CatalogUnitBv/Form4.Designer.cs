@@ -29,38 +29,41 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TI));
-            button1 = new Button();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // button1
-            // 
-            button1.Location = new Point(360, 304);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 33);
-            button1.TabIndex = 1;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(116, 72);
+            dataGridView1.Location = new Point(13, -1);
+            dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(240, 150);
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(907, 441);
             dataGridView1.TabIndex = 2;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(238, 149, 76);
+            button1.Location = new Point(320, 620);
+            button1.Name = "button1";
+            button1.Size = new Size(231, 34);
+            button1.TabIndex = 3;
+            button1.Text = "Update Note";
+            button1.UseVisualStyleBackColor = false;
             // 
             // TI
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(28, 27, 31);
-            ClientSize = new Size(800, 450);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(1143, 750);
             Controls.Add(button1);
+            Controls.Add(dataGridView1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             Name = "TI";
             Text = "Tehnologia informației";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

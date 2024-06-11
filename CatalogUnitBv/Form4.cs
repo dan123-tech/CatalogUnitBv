@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,18 +17,32 @@ namespace CatalogUnitBv
         public TI()
         {
             InitializeComponent();
+
+            button1.FlatAppearance.BorderSize = 0;
+            button1.FlatStyle = FlatStyle.Flat;
+
+            int radius = 15;
+            GraphicsPath path = new GraphicsPath();
+            path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
+            path.AddArc(button1.Width - radius * 2, 0, radius * 2, radius * 2, 270, 90);
+            path.AddArc(button1.Width - radius * 2, button1.Height - radius * 2, radius * 2, radius * 2, 0, 90);
+            path.AddArc(0, button1.Height - radius * 2, radius * 2, radius * 2, 90, 90);
+            path.CloseAllFigures();
+            button1.Region = new Region(path);
+
             LoadDataFromDatabase();
+
 
         }
         private void LoadDataFromDatabase()
         {
             try
             {
-                string connstring = "server=localhost;uid=root;pwd=1234;database=CatalogUnitbv";
+                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
                 MySqlConnection con = new MySqlConnection(connstring);
                 con.Open();
 
-                string sql = "SELECT * FROM Catalog";
+                string sql = "SELECT * FROM Catalog2";
 
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
@@ -49,7 +64,7 @@ namespace CatalogUnitBv
         {
             try
             {
-                string connstring = "server=localhost;uid=root;pwd=1234;database=CatalogUnitbv";
+                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
                 MySqlConnection con = new MySqlConnection(connstring);
                 con.Open();
 
@@ -82,7 +97,7 @@ namespace CatalogUnitBv
                         cmd.ExecuteNonQuery();
                     }
                 }
-                //&
+
                 // Display a success message
                 MessageBox.Show("Database updated successfully.");
 

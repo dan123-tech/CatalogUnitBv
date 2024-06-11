@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,15 +22,15 @@ namespace CatalogUnitBv
         public Form1()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; // Setează stilul borderului la FixedSingle
-            this.MaximizeBox = false; // Dezactivează butonul de maximizare
-            this.MinimizeBox = false; // Dezactivează butonul de minimizare
-            this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
-            this.Size = new System.Drawing.Size(557, 370);
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             Autentificare.FlatAppearance.BorderSize = 0;
             Autentificare.FlatStyle = FlatStyle.Flat;
 
-            int radius = 15; // Mărimea razei pentru colțurile curbate
+            int radius = 15;
             GraphicsPath path = new GraphicsPath();
             path.AddArc(0, 0, radius * 2, radius * 2, 180, 90);
             path.AddArc(Autentificare.Width - radius * 2, 0, radius * 2, radius * 2, 270, 90);
@@ -39,95 +40,102 @@ namespace CatalogUnitBv
             Autentificare.Region = new Region(path);
 
             GraphicsPath formaCurbata = new GraphicsPath();
-            formaCurbata.AddArc(0, 0, 20, 20, 180, 90); // Colțul din stânga sus
-            formaCurbata.AddArc(ImgFundal.Width - 30, 0, 20, 20, 270, 90); // Colțul din dreapta sus
-            formaCurbata.AddArc(ImgFundal.Width - 30, ImgFundal.Height - 30, 20, 20, 0, 90); // Colțul din dreapta jos
-            formaCurbata.AddArc(0, ImgFundal.Height - 20, 20, 20, 90, 90); // Colțul din stânga jos
-            formaCurbata.CloseFigure(); // Închiderea figurii pentru a forma o formă închisă
-            ImgFundal.Region = new Region(formaCurbata); // Setarea formei curbate ca regiune a panoului
+            formaCurbata.AddArc(0, 0, 20, 20, 180, 90);
+            formaCurbata.AddArc(ImgFundal.Width - 30, 0, 20, 20, 270, 90);
+            formaCurbata.AddArc(ImgFundal.Width - 30, ImgFundal.Height - 30, 20, 20, 0, 90);
+            formaCurbata.AddArc(0, ImgFundal.Height - 20, 20, 20, 90, 90);
+            formaCurbata.CloseFigure();
+            ImgFundal.Region = new Region(formaCurbata);
 
-
-            Save.FlatAppearance.BorderColor = Color.White;// Culoare transparentă pentru bordură
+            Save.FlatAppearance.BorderColor = Color.White;
             Save.FlatAppearance.CheckedBackColor = Color.FromArgb(238, 149, 76);
-            Email.BorderStyle = BorderStyle.None; // Elimină stilul implicit al bordurii
-            Email.BackColor = Color.FromArgb(37, 36, 40); // Setează culoarea fundalului
-            Email.ForeColor = Color.White; // Setează culoarea textului
-
-
+            Email.BorderStyle = BorderStyle.None;
+            Email.BackColor = Color.FromArgb(37, 36, 40);
+            Email.ForeColor = Color.White;
 
             Parola.BorderStyle = BorderStyle.None;
-            Parola.BackColor = Color.FromArgb(37, 36, 40); // Setează culoarea fundalului
-            Parola.ForeColor = Color.White; // Setează culoarea textului
+            Parola.BackColor = Color.FromArgb(37, 36, 40);
+            Parola.ForeColor = Color.White;
         }
-
-
 
         private void label5_Click(object sender, EventArgs e)
         {
-
+            // Your label5 click event code here
         }
 
         private void Autentificare_Click(object sender, EventArgs e)
         {
+            string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
 
             try
 
             {
-                string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
-                MySqlConnection con = new MySqlConnection();
-                con.ConnectionString = connstring;
-                con.Open();
-
-                string email = Email.Text; // Obține emailul introdus
-                string parola = Parola.Text; // Obține parola introdusă
-
-                // Verifică existența unui student cu emailul și parola introduse
-                string sql = $"SELECT * FROM Student WHERE Email = '{email}' AND Parola = '{parola}'";
-                GlobalData.Email = email;
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                // Dacă există un student cu emailul și parola introduse
-                if (reader.HasRows)
+                using (MySqlConnection con = new MySqlConnection(connstring))
                 {
-                    Form2 form2 = new Form2();
-                    form2.Show();
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+                    con.Open();
 
-                    if (result == DialogResult.Yes)
+                    string email = Email.Text;
+                    string parola = Parola.Text;
+                    string sql;
+
+                    if (email.EndsWith("@student.unitbv.ro"))
                     {
-                        // Deschideți Form6 pentru înregistrare
-                        Create form6 = new Create();
-                        form6.Show();
+                        sql = "SELECT * FROM Student2 WHERE Email = @Email AND Parola = @Parola";
+                    }
+                    else if (email.EndsWith("@unitbv.ro"))
+                    {
+                        sql = "SELECT * FROM Profesor2 WHERE Email = @Email AND Parola = @Parola";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email invalid. Vă rugăm să introduceți un email valid.");
+                        return;
+                    }
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Parola", parola);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                GlobalData.Email = email;
+                                Form2 form2 = new Form2();
+                                form2.Show();
+                            }
+                            else
+                            {
+                                DialogResult result = MessageBox.Show("Autentificare eșuată. Verificați emailul și parola.\nDoriți să vă înregistrați?", "Eroare", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+
+                                if (result == DialogResult.Yes)
+                                {
+                                    Create form6 = new Create();
+                                    form6.Show();
+                                }
+                            }
+                        }
                     }
                 }
-
-
-                reader.Close(); // Închide reader-ul
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Eroare de conexiune la baza de date: " + ex.Message);
             }
         }
-
-        private void Recovery_Click(object sender, EventArgs e)
+ private void Recovery_Click(object sender, EventArgs e)
         {
             Change_Pass form8 = new Change_Pass();
             form8.Show();
         }
-    }
-    public static class GlobalData
+        public static class GlobalData
         {
             public static string Email { get; set; }
         }
-
-        
-
     }
+}
 
-    
+
+           
 

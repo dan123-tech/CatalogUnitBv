@@ -20,7 +20,7 @@ namespace CatalogUnitBv
             this.MaximizeBox = false; // Dezactivează butonul de maximizare
             this.MinimizeBox = false; // Dezactivează butonul de minimizare
             this.StartPosition = FormStartPosition.CenterScreen; // Centrează formularul la deschidere
-            this.Size = new System.Drawing.Size(632, 517);
+            //this.Size = new System.Drawing.Size(632, 517);
             IESC.FlatAppearance.BorderSize = 0;
             IESC.FlatStyle = FlatStyle.Flat;
         }
