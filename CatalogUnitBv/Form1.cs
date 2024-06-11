@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using CatalogUnitBv.Properties;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,6 +68,7 @@ namespace CatalogUnitBv
             string connstring = "server=localhost;uid=root;pwd=danidani123;database=CatalogUnitbv";
 
             try
+
             {
                 using (MySqlConnection con = new MySqlConnection(connstring))
                 {
@@ -122,10 +124,18 @@ namespace CatalogUnitBv
                 MessageBox.Show("Eroare de conexiune la baza de date: " + ex.Message);
             }
         }
-
+ private void Recovery_Click(object sender, EventArgs e)
+        {
+            Change_Pass form8 = new Change_Pass();
+            form8.Show();
+        }
         public static class GlobalData
         {
             public static string Email { get; set; }
         }
     }
 }
+
+
+           
+
